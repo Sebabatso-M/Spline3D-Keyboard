@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { sound } from './assets';
+import { Howl } from 'howler';
 
 export default function useInput() {
     const [input, setInput] = useState({
@@ -20,9 +21,9 @@ export default function useInput() {
         Enter: 'go',
     };
 
-    const audio = new Audio();
-
-    audio.src = sound;
+    const audio = new Howl({
+        src: [sound],
+    });
 
     function findkey(key) {
         return keys[key];

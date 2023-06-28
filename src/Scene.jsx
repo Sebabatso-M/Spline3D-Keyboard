@@ -25,8 +25,7 @@ export default function Scene({ ...props }) {
     let limit = 0.8;
     const [isIncreasing, setIsIncreasing] = useState(true);
 
-    useFrame((_, delta) => {
-        // keyboardRef.current.rotation.x += 1 * delta;
+    function rotateObj() {
         let rot = keyboardRef.current.rotation;
         if (isIncreasing) {
             rot.y += increment;
@@ -41,6 +40,12 @@ export default function Scene({ ...props }) {
                 setIsIncreasing(true);
             }
         }
+    }
+
+    useFrame((_, delta) => {
+        // keyboardRef.current.rotation.x += 1 * delta;
+
+        if (rotate) rotateObj();
     });
 
     const goRef = useRef();
@@ -78,7 +83,7 @@ export default function Scene({ ...props }) {
         // keyboardRef.current.rotation.y = -0.8;
     }, [zero, one, two, go]);
 
-    const { useAmbient } = useControls({
+    const { useAmbient, rotate } = useControls({
         useAmbient: false,
         wireframe: {
             value: false,
@@ -88,6 +93,7 @@ export default function Scene({ ...props }) {
                 });
             },
         },
+        rotate: false,
     });
 
     return (
