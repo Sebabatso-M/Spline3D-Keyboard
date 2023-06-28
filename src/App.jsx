@@ -23,7 +23,6 @@ export default function App() {
             value: 2.0,
             min: 2.0,
             max: 10,
-            disabled: enableRotControl,
         },
     });
 
