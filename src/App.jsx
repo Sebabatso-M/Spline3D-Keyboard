@@ -39,6 +39,8 @@ export default function App() {
                     maxPolarAngle={Math.PI - Math.PI / 2.5} // down limit
                     autoRotate={enableRotControl}
                     autoRotateSpeed={autoRotateSpeed}
+                    minZoom={0.3}
+                    maxZoom={0.6}
                 />
                 {/* <OrbitControls enablePan={false} /> */}
 
