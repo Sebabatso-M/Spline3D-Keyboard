@@ -16,7 +16,6 @@ export default function App() {
             value: enableRotControl,
             onChange: (value) => {
                 setEnableRotControl(value);
-                console.log(enableRotControl);
             },
         },
         autoRotateSpeed: {

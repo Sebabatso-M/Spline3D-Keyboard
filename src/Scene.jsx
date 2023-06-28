@@ -71,9 +71,6 @@ export default function Scene({ ...props }) {
             ref.current.position.y = 15;
         }
     }
-    useEffect(() => {
-        console.log('render');
-    });
 
     useEffect(() => {
         handleKeyPressed(zero, keyGroup0Ref);
