@@ -73,12 +73,16 @@ export default function Scene({ ...props }) {
         }
     }
 
+    function simulateKeyPress(event, key, code) {
+        const keyEvent = new KeyboardEvent(event, { key, code });
+        document.dispatchEvent(keyEvent);
+    }
+
     useEffect(() => {
         handleKeyPressed(zero, keyGroup0Ref);
         handleKeyPressed(one, keyGroup01Ref);
         handleKeyPressed(two, keyGroup02Ref);
         handleKeyPressed(go, keyGroupGoRef);
-        // keyboardRef.current.rotation.y = -0.8;
     }, [zero, one, two, go]);
 
     const { useAmbient, rotate } = useControls({
@@ -125,6 +129,12 @@ export default function Scene({ ...props }) {
                         name='key Go'
                         ref={keyGroupGoRef}
                         position={[235.65, 0, 229.12]}
+                        onPointerDown={() =>
+                            simulateKeyPress('keydown', 'Enter', 'NumpadEnter')
+                        }
+                        onPointerUp={() =>
+                            simulateKeyPress('keyup', 'Enter', 'NumpadEnter')
+                        }
                     >
                         <mesh
                             name='Text'
@@ -152,6 +162,12 @@ export default function Scene({ ...props }) {
                         name='key 2'
                         ref={keyGroup02Ref}
                         position={[235.65, 0, -229.12]}
+                        onPointerDown={() =>
+                            simulateKeyPress('keydown', '2', 'Digit2')
+                        }
+                        onPointerUp={() =>
+                            simulateKeyPress('keyup', '2', 'Digit2')
+                        }
                     >
                         <mesh
                             name='Text1'
@@ -177,6 +193,12 @@ export default function Scene({ ...props }) {
                         name='key 0'
                         ref={keyGroup0Ref}
                         position={[-235.65, 0, 229.12]}
+                        onPointerDown={() =>
+                            simulateKeyPress('keydown', '0', 'Digit0')
+                        }
+                        onPointerUp={() =>
+                            simulateKeyPress('keyup', '0', 'Digit0')
+                        }
                     >
                         <mesh
                             name='Text2'
@@ -202,6 +224,12 @@ export default function Scene({ ...props }) {
                         name='key 1'
                         ref={keyGroup01Ref}
                         position={[-235.65, 0, -229.12]}
+                        onPointerDown={() =>
+                            simulateKeyPress('keydown', '1', 'Digit1')
+                        }
+                        onPointerUp={() =>
+                            simulateKeyPress('keyup', '1', 'Digit1')
+                        }
                     >
                         <mesh
                             name='Text3'
